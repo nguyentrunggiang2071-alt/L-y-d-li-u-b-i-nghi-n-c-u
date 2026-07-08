@@ -1,0 +1,504 @@
+# OpenAccess Paper Finder v2.1 - Complete Upgrade Requirements
+
+## 1. Project Objective
+
+Upgrade the application into a modern Open Access research paper discovery platform.
+
+The application should help researchers quickly:
+
+* Search scholarly papers.
+* Access PDF files when available.
+* View metadata only when needed.
+* Export citation information.
+* Search multiple papers simultaneously.
+
+The application should remain lightweight, fast, and easy to use.
+
+---
+
+# 2. Search
+
+Support two search methods.
+
+### Search by DOI
+
+Example
+
+10.48311/lrr.2026.7091
+
+### Search by Paper Title
+
+Example
+
+Artificial Intelligence in Higher Education
+
+The system automatically detects the input type.
+
+If the input starts with **10.**
+
+→ Search by DOI
+
+Otherwise
+
+→ Search by Paper Title.
+
+---
+
+# 3. Search Result Interface
+
+Keep the interface simple.
+
+Each result card displays only:
+
+* Paper Title
+* PDF Status
+* DOI Link
+* View Details Button
+
+Example
+
+---
+
+Artificial Intelligence in Education
+
+🟢 Download PDF
+
+https://doi.org/10.xxxx/xxxxx
+
+[ View Details ]
+
+---
+
+Do NOT display metadata by default.
+
+---
+
+# 4. View Details
+
+When users click **View Details**, expand the card or open a modal.
+
+Display:
+
+* Title
+* Authors
+* Journal
+* Publication Year
+* Publisher
+* Abstract
+* Citation Count
+* Language
+* Document Type
+* License
+* Open Access Status
+* Landing Page
+* PDF URL
+* OpenAlex ID
+
+Do not navigate to another page.
+
+---
+
+# 5. Smart PDF Detection
+
+Do not rely on only one PDF URL.
+
+Use the following priority.
+
+Priority 1
+
+primary_location.pdf_url
+
+Priority 2
+
+best_oa_location.pdf_url
+
+Priority 3
+
+Loop through every object inside
+
+locations[]
+
+Find the first valid pdf_url.
+
+Priority 4
+
+If no PDF exists but
+
+Open Access = true
+
+and
+
+landing_page_url exists
+
+Display
+
+🌐 View Article
+
+instead of
+
+No PDF Available
+
+Priority 5
+
+Before displaying Download PDF
+
+Verify the PDF URL using an HTTP HEAD request (or GET if HEAD is unavailable).
+
+If the URL is invalid:
+
+* Hide Download PDF.
+* Display View Article.
+
+Never display a broken PDF button.
+
+---
+
+# 6. Open Access Status
+
+Display badges.
+
+🟢 Open Access
+
+🟡 Open Access (Landing Page Only)
+
+🔴 Subscription Required
+
+Do not assume that every Open Access paper has a direct PDF URL.
+
+---
+
+# 7. DOI
+
+Display DOI as a clickable hyperlink.
+
+Provide:
+
+* Copy DOI
+* Open DOI
+
+---
+
+# 8. Multi-language Interface
+
+Support:
+
+* English
+* Vietnamese
+
+Use react-i18next.
+
+Requirements:
+
+* Instant language switching
+* No page refresh
+* Store selected language in LocalStorage
+* Translate all UI text
+
+---
+
+# 9. Search History
+
+Store search history.
+
+Features
+
+* Recent Searches
+* Clear History
+* One-click Search Again
+
+---
+
+# 10. Favorites
+
+Create My Library.
+
+Users can
+
+* Save paper
+* Remove paper
+* Search favorites
+
+---
+
+# 11. Export
+
+Support
+
+* Copy APA Citation
+* Download BibTeX
+* Download RIS
+* Export JSON
+
+Future
+
+* CSV
+* Excel
+
+---
+
+# 12. Multi-source Metadata
+
+Improve metadata quality using multiple providers.
+
+Current provider
+
+OpenAlex
+
+Future providers
+
+* Crossref
+* Unpaywall
+
+The frontend must never communicate directly with these providers.
+
+Everything must go through the backend.
+
+Architecture
+
+Frontend
+
+↓
+
+Express API
+
+↓
+
+Metadata Service
+
+↓
+
+OpenAlex Service
+
+↓
+
+Crossref Service
+
+↓
+
+Unpaywall Service
+
+↓
+
+Unified JSON Response
+
+Metadata Service responsibilities
+
+* Merge metadata
+* Fill missing fields
+* Remove duplicates
+* Select the best values
+* Return one standardized response
+
+Metadata priority
+
+Title
+
+OpenAlex
+
+↓
+
+Crossref
+
+Abstract
+
+OpenAlex
+
+↓
+
+Crossref
+
+Open Access
+
+OpenAlex
+
+↓
+
+Verify using Unpaywall
+
+PDF
+
+1. primary_location.pdf_url
+
+2. best_oa_location.pdf_url
+
+3. locations[]
+
+4. Unpaywall
+
+5. Publisher Landing Page
+
+The frontend must never process raw provider responses.
+
+---
+
+# 13. Batch Processing
+
+Support batch searching.
+
+Input methods
+
+* Paste multiple DOIs
+* Upload TXT
+* Upload CSV
+
+One DOI per line.
+
+The system should
+
+* Validate DOI
+* Remove duplicates
+* Ignore empty lines
+* Process asynchronously
+* Display progress
+* Continue even if one DOI fails
+
+Example
+
+Processing...
+
+32 / 100 completed
+
+Result Table
+
+Columns
+
+* Title
+* DOI
+* Open Access
+* PDF
+* Year
+* Publisher
+* Status
+
+Actions
+
+* Download PDF
+* Open DOI
+* View Details
+
+Failed DOI
+
+Display
+
+* DOI
+* Error
+* Reason
+
+Allow downloading an error report.
+
+Export
+
+* CSV
+* JSON
+* BibTeX
+* RIS
+
+---
+
+# 14. Backend Architecture
+
+Create dedicated services.
+
+metadataService.js
+
+Merge all metadata.
+
+openAlexService.js
+
+Communicate with OpenAlex only.
+
+crossrefService.js
+
+Retrieve additional metadata when needed.
+
+unpaywallService.js
+
+Verify Open Access and PDF.
+
+pdfService.js
+
+Validate PDF URLs.
+
+batchService.js
+
+Handle batch processing.
+
+doiService.js
+
+Validate DOI.
+
+---
+
+# 15. Standard JSON Response
+
+Every provider should return the same format.
+
+{
+title,
+authors,
+journal,
+publisher,
+year,
+doi,
+abstract,
+citationCount,
+language,
+type,
+license,
+isOpenAccess,
+pdfUrl,
+landingPage,
+provider
+}
+
+The frontend should consume only this standardized object.
+
+---
+
+# 16. Performance
+
+Load only basic information in search results.
+
+Load detailed metadata only after clicking View Details.
+
+Use lazy loading.
+
+Limit concurrent API requests during batch processing.
+
+Cache duplicate DOI lookups.
+
+Reduce unnecessary API calls.
+
+---
+
+# 17. Error Handling
+
+Handle
+
+* Invalid DOI
+* Empty Search
+* No Results
+* API Timeout
+* Broken PDF
+* Network Error
+* Publisher Unavailable
+
+Support both English and Vietnamese.
+
+---
+
+# 18. Final Goal
+
+Build a lightweight scholarly search platform focused on Open Access.
+
+Users should be able to:
+
+* Search by DOI or Title.
+* Search hundreds of DOIs in one batch.
+* Download PDFs when available.
+* Open the publisher page when a direct PDF is unavailable.
+* View detailed metadata only when requested.
+* Export citation data.
+* Switch instantly between English and Vietnamese.
+* Save favorite papers.
+* Use standardized metadata from multiple providers.

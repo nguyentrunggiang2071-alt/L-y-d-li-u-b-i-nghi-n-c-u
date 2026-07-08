@@ -1,0 +1,106 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "language": "Language"
+  },
+  "home": {
+    "title": "Find open-access research papers in seconds",
+    "subtitle": "Search by DOI or paper title and inspect metadata, authors, journals, and access status.",
+    "placeholder": "Enter DOI or paper title",
+    "button": "Search",
+    "searching": "Searching..."
+  },
+  "results": {
+    "title": "Search results",
+    "subtitle": "Showing matches for",
+    "found": "Found {{count}} result(s)",
+    "newSearch": "New search",
+    "recent": "Recent searches",
+    "clear": "Clear history",
+    "empty": "No results found for",
+    "emptyHint": "Try a DOI, a more specific title, or a different keyword."
+  },
+  "batch": {
+    "title": "Batch Search",
+    "description": "Paste one DOI per line or separate them with commas.",
+    "placeholder": "10.1038/example\n10.1000/another",
+    "submit": "Start Batch Search",
+    "processing": "Processing {{count}} DOI(s)...",
+    "processingShort": "Processing...",
+    "completed": "Completed {{completed}}/{{total}} DOI(s).",
+    "failed": "Batch processing failed.",
+    "empty": "Please enter at least one DOI.",
+    "clear": "Clear",
+    "example": "Example",
+    "requested": "Requested",
+    "valid": "Valid",
+    "invalid": "Invalid",
+    "duplicates": "Duplicates removed",
+    "doi": "DOI",
+    "title": "Title",
+    "status": "Status",
+    "access": "Access",
+    "actions": "Actions",
+    "success": "Success",
+    "noTitle": "No title"
+  },
+  "paper": {
+    "authors": "Authors",
+    "journal": "Journal",
+    "year": "Publication Year",
+    "publisher": "Publisher",
+    "doi": "DOI",
+    "language": "Language",
+    "type": "Document Type",
+    "abstract": "Abstract",
+    "noAbstract": "No abstract available.",
+    "openAccess": "Open Access",
+    "closedAccess": "Closed Access",
+    "subscriptionRequired": "Subscription Required",
+    "pdfAvailable": "PDF available",
+    "pdfUnavailable": "PDF is not available.",
+    "downloadPdf": "Download PDF",
+    "viewArticle": "View Article",
+    "openAccessStatus": "Open Access Status",
+    "pdfUrl": "PDF URL",
+    "landingPage": "Landing Page",
+    "license": "License",
+    "copyDoi": "Copy DOI",
+    "openDoi": "Open DOI Link",
+    "viewDetails": "View Details",
+    "citationCount": "Citation Count",
+    "openAlexId": "OpenAlex ID",
+    "viewPublisher": "View Publisher Page",
+    "viewOpenAlex": "View OpenAlex Record"
+  },
+  "errors": {
+    "empty": "Please enter a DOI or paper title.",
+    "invalidDoi": "The DOI format looks invalid.",
+    "network": "Network error. Please try again.",
+    "timeout": "The request timed out. Please try again.",
+    "notFound": "No results were found.",
+    "generic": "Unable to fetch results right now."
+  },
+  "loading": {
+    "search": "Searching OpenAlex for your paper..."
+  },
+  "about": {
+    "title": "What this app does",
+    "description": "OpenAccess Paper Finder helps researchers quickly discover scholarly works from OpenAlex. Search by DOI or paper title to retrieve metadata, inspect abstracts, and check whether a paper is open access.",
+    "card1Title": "Fast lookup",
+    "card1Text": "Use DOI or title-based search with a polished academic interface.",
+    "card2Title": "Open access insight",
+    "card2Text": "Verify whether a paper is open access and where to find it.",
+    "card3Title": "Research ready",
+    "card3Text": "Explore authors, journals, citation counts, and abstracts at a glance."
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "The page you are looking for does not exist or may have moved.",
+    "back": "Back to home"
+  },
+  "common": {
+    "unknown": "Unknown"
+  }
+}

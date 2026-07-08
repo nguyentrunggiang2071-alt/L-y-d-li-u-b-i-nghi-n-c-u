@@ -1,0 +1,151 @@
+# Feature Request: Smart Open Access & PDF Status
+
+## Objective
+
+Improve the paper result interface by distinguishing between Open Access status and PDF availability.
+
+Do not treat Open Access and PDF as the same concept.
+
+The application must clearly indicate whether:
+
+* The paper is Open Access.
+* A direct PDF download is available.
+* Users need to visit the publisher's page to obtain the PDF.
+
+---
+
+# Status Logic
+
+## Case 1 - Open Access with Direct PDF
+
+Conditions
+
+* Open Access = true
+* A valid PDF URL exists
+
+Display
+
+🟢 Open Access
+
+📥 Download PDF
+
+🔗 DOI
+
+The **Download PDF** button should open the PDF directly in a new browser tab.
+
+---
+
+## Case 2 - Open Access without Direct PDF
+
+Conditions
+
+* Open Access = true
+* No valid PDF URL
+* Landing page exists
+
+Display
+
+🟢 Open Access
+
+🌐 View Article
+
+🔗 DOI
+
+The **View Article** button should open the publisher or repository landing page where the user can access or download the PDF manually.
+
+Do NOT display "No PDF Available" in this case.
+
+---
+
+## Case 3 - Closed Access
+
+Conditions
+
+* Open Access = false
+
+Display
+
+🔴 Subscription Required
+
+🔗 DOI
+
+Do not display either **Download PDF** or **View Article**.
+
+---
+
+# PDF Detection Priority
+
+The backend should determine the PDF status using the following priority:
+
+1. primary_location.pdf_url
+
+2. best_oa_location.pdf_url
+
+3. Search every object inside locations[]
+
+4. Multi-source metadata (Unpaywall)
+
+5. landing_page_url
+
+Before displaying **Download PDF**, verify that the PDF URL is accessible using an HTTP HEAD request (or GET if HEAD is not supported).
+
+If the PDF URL is invalid or returns an error:
+
+* Hide the Download PDF button.
+* Display **View Article** instead.
+
+---
+
+# Search Result Card
+
+Each search result should display only:
+
+Paper Title
+
+🟢 Open Access / 🔴 Subscription Required
+
+📥 Download PDF (if available)
+
+🌐 View Article (if direct PDF is unavailable)
+
+🔗 DOI
+
+View Details
+
+Keep the interface simple and clean.
+
+---
+
+# View Details
+
+When the user clicks **View Details**, display:
+
+* Authors
+* Journal
+* Publication Year
+* Publisher
+* Abstract
+* Citation Count
+* Language
+* Document Type
+* License
+* Open Access Status
+* PDF URL
+* Landing Page
+* OpenAlex ID
+
+---
+
+# User Experience
+
+The application should help users understand the paper's accessibility immediately.
+
+Priority of actions:
+
+1. 📥 Download PDF
+2. 🌐 View Article
+3. 🔗 DOI
+
+Users should never see a broken Download PDF button.
+
+If the paper is Open Access but requires visiting the publisher's page (e.g., Nature, Springer, Wiley, Taylor & Francis), the application should clearly indicate this by showing **🌐 View Article** instead of reporting that no PDF is available.

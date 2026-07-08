@@ -1,0 +1,23 @@
+{
+  "name": "openaccess-paper-finder",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "node server/app.js",
+    "client": "cd client && npm run dev -- --host 0.0.0.0",
+    "build": "cd client && npm run build",
+    "start": "npm run server",
+    "install:all": "npm install && cd client && npm install"
+  },
+  "dependencies": {
+    "axios": "^1.7.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.1",
+    "express": "^4.21.1"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1"
+  }
+}

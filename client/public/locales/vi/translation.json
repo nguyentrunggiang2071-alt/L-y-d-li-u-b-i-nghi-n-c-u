@@ -1,0 +1,106 @@
+{
+  "nav": {
+    "home": "Trang chủ",
+    "about": "Giới thiệu",
+    "language": "Ngôn ngữ"
+  },
+  "home": {
+    "title": "Tìm kiếm bài báo nghiên cứu mở trong vài giây",
+    "subtitle": "Tìm theo DOI hoặc tiêu đề bài báo để xem siêu dữ liệu, tác giả, tạp chí và trạng thái truy cập.",
+    "placeholder": "Nhập DOI hoặc tiêu đề bài báo",
+    "button": "Tìm kiếm",
+    "searching": "Đang tìm kiếm..."
+  },
+  "results": {
+    "title": "Kết quả tìm kiếm",
+    "subtitle": "Đang hiển thị kết quả cho",
+    "found": "Tìm thấy {{count}} kết quả",
+    "newSearch": "Tìm kiếm mới",
+    "recent": "Tìm kiếm gần đây",
+    "clear": "Xóa lịch sử",
+    "empty": "Không tìm thấy kết quả cho",
+    "emptyHint": "Hãy thử DOI, tiêu đề cụ thể hơn hoặc từ khóa khác."
+  },
+  "batch": {
+    "title": "Tìm kiếm hàng loạt",
+    "description": "Dán một DOI mỗi dòng hoặc tách bằng dấu phẩy.",
+    "placeholder": "10.1038/example\n10.1000/another",
+    "submit": "Bắt đầu tìm kiếm hàng loạt",
+    "processing": "Đang xử lý {{count}} DOI...",
+    "processingShort": "Đang xử lý...",
+    "completed": "Hoàn tất {{completed}}/{{total}} DOI.",
+    "failed": "Xử lý hàng loạt thất bại.",
+    "empty": "Vui lòng nhập ít nhất một DOI.",
+    "clear": "Xóa",
+    "example": "Ví dụ",
+    "requested": "Đã nhập",
+    "valid": "Hợp lệ",
+    "invalid": "Không hợp lệ",
+    "duplicates": "Bị bỏ trùng",
+    "doi": "DOI",
+    "title": "Tiêu đề",
+    "status": "Trạng thái",
+    "access": "Truy cập",
+    "actions": "Hành động",
+    "success": "Thành công",
+    "noTitle": "Không có tiêu đề"
+  },
+  "paper": {
+    "authors": "Tác giả",
+    "journal": "Tạp chí",
+    "year": "Năm xuất bản",
+    "publisher": "Nhà xuất bản",
+    "doi": "DOI",
+    "language": "Ngôn ngữ",
+    "type": "Loại tài liệu",
+    "abstract": "Tóm tắt",
+    "noAbstract": "Không có tóm tắt.",
+    "openAccess": "Truy cập mở",
+    "closedAccess": "Không mở",
+    "subscriptionRequired": "Cần đăng ký/thuê bao",
+    "pdfAvailable": "Có PDF",
+    "pdfUnavailable": "PDF không khả dụng.",
+    "downloadPdf": "Tải PDF",
+    "viewArticle": "Xem bài viết",
+    "openAccessStatus": "Trạng thái truy cập mở",
+    "pdfUrl": "URL PDF",
+    "landingPage": "Trang đích",
+    "license": "Giấy phép",
+    "copyDoi": "Sao chép DOI",
+    "openDoi": "Mở liên kết DOI",
+    "viewDetails": "Xem chi tiết",
+    "citationCount": "Số trích dẫn",
+    "openAlexId": "OpenAlex ID",
+    "viewPublisher": "Xem trang nhà xuất bản",
+    "viewOpenAlex": "Xem bản ghi OpenAlex"
+  },
+  "errors": {
+    "empty": "Vui lòng nhập DOI hoặc tiêu đề bài báo.",
+    "invalidDoi": "Định dạng DOI có vẻ không hợp lệ.",
+    "network": "Lỗi mạng. Vui lòng thử lại.",
+    "timeout": "Yêu cầu đã hết thời gian chờ. Vui lòng thử lại.",
+    "notFound": "Không tìm thấy kết quả nào.",
+    "generic": "Không thể lấy kết quả ngay lúc này."
+  },
+  "loading": {
+    "search": "Đang tìm kiếm trên OpenAlex..."
+  },
+  "about": {
+    "title": "Ứng dụng này làm gì",
+    "description": "OpenAccess Paper Finder giúp các nhà nghiên cứu nhanh chóng tìm thấy các công trình học thuật từ OpenAlex. Tìm theo DOI hoặc tiêu đề bài báo để lấy siêu dữ liệu, xem tóm tắt và kiểm tra xem bài báo có mở truy cập hay không.",
+    "card1Title": "Tra cứu nhanh",
+    "card1Text": "Dùng tìm kiếm theo DOI hoặc tiêu đề với giao diện học thuật hiện đại.",
+    "card2Title": "Thông tin truy cập mở",
+    "card2Text": "Xác minh xem bài báo có mở truy cập và nơi để tìm nó.",
+    "card3Title": "Sẵn sàng cho nghiên cứu",
+    "card3Text": "Khám phá tác giả, tạp chí, số trích dẫn và tóm tắt chỉ trong vài cú nhấp."
+  },
+  "notFound": {
+    "title": "Không tìm thấy trang",
+    "description": "Trang bạn đang tìm không tồn tại hoặc đã được di chuyển.",
+    "back": "Quay về trang chủ"
+  },
+  "common": {
+    "unknown": "Không rõ"
+  }
+}

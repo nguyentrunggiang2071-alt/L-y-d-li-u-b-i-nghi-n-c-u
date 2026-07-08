@@ -1,0 +1,237 @@
+# Feature Request: Upgrade OpenAccess Paper Finder
+
+Please upgrade the current application with the following requirements.
+
+## 1. Search Function
+
+The search box must support two input types:
+
+* DOI
+* Paper Title
+
+Examples:
+
+* 10.48311/lrr.2026.7091
+* Artificial Intelligence in Higher Education
+
+The application must automatically detect the input type.
+
+If the input starts with **10.**, search by DOI.
+
+Otherwise, search by paper title.
+
+---
+
+## 2. Search Result
+
+When a paper is found, display a detailed paper information page instead of only a simple list.
+
+Display the following information:
+
+### Basic Information
+
+* Paper Title
+* Authors
+* Journal
+* Publication Year
+* Publisher
+* DOI
+* Language
+* Document Type
+
+### Abstract
+
+Display the complete abstract when available.
+
+If no abstract exists, display:
+
+"No abstract available."
+
+### Open Access
+
+Display Open Access status using badges.
+
+Examples:
+
+* 🟢 Open Access
+* 🔴 Closed Access
+
+---
+
+## 3. PDF Availability
+
+Check whether a downloadable PDF is available.
+
+If PDF exists:
+
+* Show a green badge
+* Display a **Download PDF** button
+* Open PDF in a new browser tab
+
+If PDF does not exist:
+
+Display
+
+"PDF is not available."
+
+Do not show the download button.
+
+---
+
+## 4. DOI Section
+
+Display the DOI.
+
+Provide two actions:
+
+* Copy DOI
+* Open DOI Link
+
+---
+
+## 5. Citation
+
+Display
+
+* Citation Count
+* OpenAlex ID
+
+---
+
+## 6. Landing Page
+
+Display buttons for
+
+* View Publisher Page
+* View OpenAlex Record
+
+---
+
+## 7. User Interface
+
+Redesign the interface to look like a professional academic search platform similar to Google Scholar or Semantic Scholar.
+
+Requirements:
+
+* Modern UI
+* Responsive layout
+* Clean typography
+* Card-based design
+* Icons for every field
+* Loading animation
+* Error page
+* Empty result page
+* Dark Mode
+* Smooth animations
+
+---
+
+## 8. Bilingual Interface
+
+The application must support two interface languages:
+
+* English
+* Vietnamese
+
+Add a language switch button in the navigation bar.
+
+Examples:
+
+🇺🇸 English
+
+🇻🇳 Tiếng Việt
+
+Changing language must update the interface immediately without reloading the page.
+
+Use **react-i18next** for internationalization.
+
+Translate every interface element including:
+
+Navigation
+
+Buttons
+
+Labels
+
+Messages
+
+Errors
+
+Loading text
+
+Badges
+
+Dialogs
+
+Footer
+
+---
+
+## 9. Translation Files
+
+Create
+
+/public/locales/en/translation.json
+
+/public/locales/vi/translation.json
+
+Store every user-facing string inside these files.
+
+Do not hardcode any UI text.
+
+---
+
+## 10. Search Experience
+
+After a successful search:
+
+* Save the keyword in LocalStorage.
+* Display Recent Searches.
+* Allow users to clear search history.
+
+---
+
+## 11. Error Handling
+
+Handle all common errors:
+
+* Invalid DOI
+* Empty input
+* Network error
+* API timeout
+* No results found
+
+Display friendly messages in both English and Vietnamese.
+
+---
+
+## 12. Code Quality
+
+Refactor the existing project.
+
+Use reusable React components.
+
+Separate business logic from UI.
+
+Follow clean architecture principles.
+
+Use async/await.
+
+Avoid duplicated code.
+
+Add comments where necessary.
+
+---
+
+## 13. Final Goal
+
+The application should become a professional Open Access research paper search platform capable of:
+
+* Searching by DOI or paper title.
+* Displaying complete article metadata.
+* Showing abstract.
+* Detecting Open Access status.
+* Detecting PDF availability.
+* Allowing direct PDF download.
+* Supporting bilingual English/Vietnamese interface.
+* Providing a modern and responsive user experience.

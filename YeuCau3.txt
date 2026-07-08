@@ -1,0 +1,111 @@
+# Upgrade Search Result UI
+
+Redesign the search results page to make it cleaner, simpler, and more user-friendly.
+
+## Search Result Layout
+
+After a user searches by DOI or paper title, do **not** immediately display the full metadata.
+
+Instead, show a compact list of search results.
+
+Each result card should only display:
+
+* Paper Title
+* Download PDF button (if available)
+* DOI link
+* View Details button
+
+Example:
+
+---
+
+Artificial Intelligence for Open Education
+
+[Download PDF]
+
+DOI:
+https://doi.org/10.xxxx/xxxxx
+
+[View Details]
+
+---
+
+## PDF Button
+
+If a PDF is available:
+
+* Show a green **Download PDF** button.
+* Open the PDF in a new browser tab.
+
+If a PDF is not available:
+
+* Hide the button.
+* Display a gray badge:
+
+"No PDF Available"
+
+## DOI
+
+Display the DOI as a clickable hyperlink.
+
+Example:
+
+https://doi.org/10.xxxx/xxxxx
+
+Users should be able to click the DOI to open the publisher's page.
+
+## View Details
+
+The **View Details** button should expand the paper card (accordion) or open a modal dialog.
+
+Only after clicking **View Details** should the application display:
+
+* Title
+* Authors
+* Journal
+* Publisher
+* Publication Year
+* Abstract
+* Citation Count
+* Open Access Status
+* Language
+* Document Type
+* OpenAlex ID
+* Landing Page
+
+Users should not see this information by default.
+
+## User Experience
+
+The application should prioritize simplicity.
+
+Researchers usually only need:
+
+* The paper title
+* A PDF download (if available)
+* The DOI link
+
+Detailed metadata should remain hidden until explicitly requested.
+
+## Interface
+
+Use a modern card-based design.
+
+Each card should have:
+
+* Paper title
+* PDF button
+* DOI link
+* View Details button
+
+Cards should have rounded corners, shadows, spacing, and hover effects.
+
+The page should resemble Google Scholar or Semantic Scholar rather than a traditional database interface.
+
+## Performance
+
+Load only the basic information for the result list.
+
+Load detailed metadata only when the user clicks **View Details** (lazy loading) whenever possible.
+
+This reduces API calls and improves performance.
